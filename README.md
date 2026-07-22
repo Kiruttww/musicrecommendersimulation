@@ -18,6 +18,11 @@ Replace this paragraph with your own summary of what your version does.
 ## How The System Works
 
 Explain your design in plain language.
+From my understanding, real world reccomendation has two major approaches. First is collaborative filtering. This just means if two people like the same types of songs, the system will reccomend future songs that Person A likes to Person B. The second one is content-based filtering. It tries to quantify the different properties of songs, vectorize it. It will create a vector profile of what the person likes then reccomend songs whose vectors are similar to your profile. 
+
+My system will be leaning towards the content-based filtering. It currently has access to 7 properties of songs, energy, mood, acousticness, genre, valece, danceability and temp_bpm. After some personal reflection, I decided valence, energy and mood will be highest priority, followed by acousticness and genre and the lowest priorities will be everything else.
+
+The userprofile stores favorite genre, favorite mood, target energy and whether the user likes acoustic or not. For score computation, it does a weighted sum of per-feature similarities. All the numeric features reward closer values, whereas the categorical features other than genre use exact matches. To make this more robust, genre will have a similarity matric between genres to help break ties. So, it will score the songs and simply return the top 3 or 5.
 
 Some prompts to answer:
 
