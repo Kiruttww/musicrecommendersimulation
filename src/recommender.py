@@ -67,7 +67,6 @@ def load_songs(csv_path: str) -> List[Dict]:
                 row[field] = float(row[field])
             songs.append(row)
 
-    print(len(songs))
     return songs
 
 # --- Scoring configuration (content-based "recipe") ------------------------
@@ -239,7 +238,7 @@ def score_song(user_prefs: Dict, song: Dict) -> Tuple[float, List[str]]:
 
     return round(score, 4), reasons
 
-def recommend_songs(user_prefs: Dict, songs: List[Dict], k: int = 5) -> List[Tuple[Dict, float, str]]:
+def recommend_songs(user_prefs: Dict, songs: List[Dict], k: int = 3) -> List[Tuple[Dict, float, str]]:
     """
     Functional implementation of the recommendation logic.
     Required by src/main.py
